@@ -1,5 +1,6 @@
 #
 # Copyright 2012-2016 Luke Frisken, Bronto Software, Inc. and contributors
+# Modified by Hendrik Sauer
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +20,13 @@ from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
 from sphinx import addnodes
-from sphinx.locale import l_
+from sphinx.locale import _
 from sphinx.domains import Domain, ObjType
 from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
 from sphinx.util.docfields import Field, GroupedField, TypedField
 from sphinx.util.docfields import DocFieldTransformer
 from sphinx.directives import ObjectDescription
-from sphinx.locale import l_, _
 import sphinxrust.formatter as formatter
 import re
 
@@ -144,10 +144,10 @@ class RustFunction(RustObject):
     """
 
     doc_field_types = [
-        TypedField('parameter', label=l_('Parameters'),
+        TypedField('parameter', label=_('Parameters'),
                    names=('param', 'parameter', 'arg', 'argument'),
                    typerolename='type', typenames=('type',)),
-        Field('returnvalue', label=l_('Returns'), has_arg=False,
+        Field('returnvalue', label=_('Returns'), has_arg=False,
               names=('returns', 'return'))
     ]
 
@@ -214,7 +214,7 @@ class RustStruct(RustObject):
     """
 
     doc_field_types = [
-        GroupedField('parameter', names=('param',), label=l_('Parameters'))
+        GroupedField('parameter', names=('param',), label=_('Parameters'))
     ]
 
     def get_index_text(self, crate, module, impl, name):
@@ -348,12 +348,12 @@ class RustDomain(Domain):
     name = 'rust'
     label = "Rust"
     object_types = {
-        'function': ObjType(l_('function'), 'fn'),
-        'struct': ObjType(l_('struct'), 'struct'),
-        'trait': ObjType(l_('trait'), 'trait'),
-        'enum': ObjType(l_('enum'), 'enum'),
-        'member': ObjType(l_('member'), 'member'),
-        'implementation': ObjType(l_('implementation'), 'impl'),
+        'function': ObjType(_('function'), 'fn'),
+        'struct': ObjType(_('struct'), 'struct'),
+        'trait': ObjType(_('trait'), 'trait'),
+        'enum': ObjType(_('enum'), 'enum'),
+        'member': ObjType(_('member'), 'member'),
+        'implementation': ObjType(_('implementation'), 'impl'),
     }
 
     directives = {
